@@ -1,4 +1,3 @@
-// MainNavigation.js
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useFavorites } from "../../store/FavoriteContext";
@@ -8,20 +7,20 @@ export default function MainNavigation() {
   const { favoriteMeetups } = useFavorites();
   const favoritesCount = favoriteMeetups.length;
 
-  const [isVisible, setIsVisible] = useState(true); // Estado de visibilidad del header
-  const [lastScrollY, setLastScrollY] = useState(window.scrollY); // Posición del scroll anterior
+  const [isVisible, setIsVisible] = useState(true); 
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY); 
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // Oculta el header al hacer scroll hacia abajo
+        setIsVisible(false); 
       } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true); // Muestra el header al hacer scroll hacia arriba
+        setIsVisible(true); 
       }
 
-      setLastScrollY(currentScrollY); // Actualiza la última posición del scroll
+      setLastScrollY(currentScrollY); 
     };
 
     window.addEventListener("scroll", handleScroll);

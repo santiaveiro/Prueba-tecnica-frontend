@@ -1,4 +1,4 @@
-// App.js
+
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import MainNavigation from "./components/layout/MainNavigation";
@@ -11,9 +11,9 @@ function App() {
   return (
     <FavoriteProvider>
       <Router>
-        <div data-testid="app"> {/* Asegúrate de que este atributo esté en el contenedor principal */}
+        <div data-testid="app"> 
           <MainNavigation />
-          <Layout data-testid="layout"> {/* Agrega data-testid="layout" aquí */}
+          <Layout data-testid="layout"> 
             <Routes>
               <Route path="/" element={<AllMeetupsPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />

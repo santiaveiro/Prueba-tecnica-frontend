@@ -11,7 +11,7 @@ export const useFetch = (options) => {
       })
       .catch((error) => {
         console.error("Fetch error:", error);
-        setData(null); // Maneja el error estableciendo data en null
+        setData(null); 
       });
   }, [options.url]);
 

@@ -1,4 +1,4 @@
-// Favorites.js
+
 import MeetupItem from "../components/meetups/MeetupItem";
 import { useFavorites } from "../store/FavoriteContext";
 
