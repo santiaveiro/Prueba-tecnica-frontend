@@ -11,14 +11,16 @@ function App() {
   return (
     <FavoriteProvider>
       <Router>
-        <MainNavigation />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<AllMeetupsPage />} />
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/new-meetup" element={<NewMeetupsPage />} />
-          </Routes>
-        </Layout>
+        <div data-testid="app"> {/* Asegúrate de que este atributo esté en el contenedor principal */}
+          <MainNavigation />
+          <Layout data-testid="layout"> {/* Agrega data-testid="layout" aquí */}
+            <Routes>
+              <Route path="/" element={<AllMeetupsPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/new-meetup" element={<NewMeetupsPage />} />
+            </Routes>
+          </Layout>
+        </div>
       </Router>
     </FavoriteProvider>
   );

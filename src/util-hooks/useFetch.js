@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useFetch = (options) => {
   const [data, setData] = useState(null);
@@ -8,6 +8,10 @@ export const useFetch = (options) => {
       .then((response) => response.json())
       .then((json) => {
         setData(json);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        setData(null); // Maneja el error estableciendo data en null
       });
   }, [options.url]);
 
