@@ -17,5 +17,6 @@ export const useFetch = (options) => {
 
   return {
     data,
+    setData, 
   };
 };

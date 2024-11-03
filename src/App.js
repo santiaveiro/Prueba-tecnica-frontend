@@ -1,19 +1,18 @@
-
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import MainNavigation from "./components/layout/MainNavigation";
 import AllMeetupsPage from "./pages/AllMeetupsPage";
 import FavoritesPage from "./pages/Favorites";
 import NewMeetupsPage from "./pages/NewMeetup";
-import { FavoriteProvider } from "./store/FavoriteContext";
+import { MeetupProvider } from "./store/MeetupContext";
 
 function App() {
   return (
-    <FavoriteProvider>
+    <MeetupProvider>
       <Router>
-        <div data-testid="app"> 
+        <div data-testid="app">
           <MainNavigation />
-          <Layout data-testid="layout"> 
+          <Layout>
             <Routes>
               <Route path="/" element={<AllMeetupsPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
@@ -22,7 +21,7 @@ function App() {
           </Layout>
         </div>
       </Router>
-    </FavoriteProvider>
+    </MeetupProvider>
   );
 }
 

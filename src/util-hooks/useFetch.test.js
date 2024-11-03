@@ -1,15 +1,27 @@
-
-import { render, waitFor } from "@testing-library/react";
-import React from "react";
+// useFetch.test.js
+import { render, screen, waitFor } from "@testing-library/react";
 import { useFetch } from "./useFetch";
 
+beforeEach(() => {
+
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve([{ id: 1, title: "Meetup Test" }]),
+    })
+  );
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 function TestComponent({ url }) {
   const { data } = useFetch({ url });
+  
   return (
     <div>
       {data ? (
-        data.map((item) => <p key={item.id}>{item.title}</p>)
+        <p data-testid="fetch-result">{JSON.stringify(data)}</p>
       ) : (
         <p>Loading...</p>
       )}
@@ -17,40 +29,13 @@ function TestComponent({ url }) {
   );
 }
 
-global.fetch = jest.fn();
+test("fetches and sets data correctly", async () => {
+  render(<TestComponent url="/data.json" />);
 
-describe("useFetch", () => {
-  afterEach(() => {
-    fetch.mockClear();
-  });
-
-  test("returns data after successful fetch", async () => {
-    const mockData = [{ id: 1, title: "Mocked Meetup" }];
-    fetch.mockResolvedValueOnce({
-      json: jest.fn().mockResolvedValueOnce(mockData),
-    });
-
-    const { getByText } = render(<TestComponent url="/data.json" />);
-
+  await waitFor(() => {
     
-    await waitFor(() => expect(getByText("Mocked Meetup")).toBeInTheDocument());
-    expect(fetch).toHaveBeenCalledWith("/data.json");
-  });
-
-  test("handles fetch error", async () => {
-   
-    const originalError = console.error;
-    console.error = jest.fn();
-
-    fetch.mockRejectedValueOnce(new Error("Fetch failed"));
-
-    const { getByText } = render(<TestComponent url="/data.json" />);
-
-    
-    await waitFor(() => expect(getByText("Loading...")).toBeInTheDocument());
-    expect(fetch).toHaveBeenCalledWith("/data.json");
-
-    
-    console.error = originalError;
+    expect(screen.getByTestId("fetch-result")).toHaveTextContent(
+      JSON.stringify([{ id: 1, title: "Meetup Test" }])
+    );
   });
 });

@@ -1,28 +1,18 @@
-// MeetupItem.js
-import { useFavorites } from "../../store/FavoriteContext";
+import { useMeetups } from "../../store/MeetupContext";
 import Card from "../ui/Card";
-import { useFetch } from "./../../util-hooks/useFetch";
 import classes from "./MeetupItem.module.css";
 
-export default function MeetupItem() {
-  const { data } = useFetch({ url: "/data.json" });
-  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
-
-  if (!data) return <p>Loading...</p>;
-  let [item] = data;
-  
-  const itemIsFavorite = isFavorite(item.id);
+export default function MeetupItem({ item }) {
+  const { toggleFavorite, isFavorite } = useMeetups();
 
   function toggleFavoriteStatus() {
-    if (itemIsFavorite) {
-      removeFavorite(item.id);
-    } else {
-      addFavorite(item);
-    }
+    toggleFavorite(item);
   }
 
+  const itemIsFavorite = isFavorite(item.id);
+
   return (
-    <li className={classes.item} data-test='meet-up-item'>
+    <li className={classes.item} data-test="meet-up-item">
       <Card>
         <div className={classes.image}>
           <img src={item.image} alt={item.title} />

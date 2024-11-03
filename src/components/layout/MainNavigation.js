@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useFavorites } from "../../store/FavoriteContext";
+import { useMeetups } from "../../store/MeetupContext";
 import classes from "./MainNavigation.module.css";
 
 export default function MainNavigation() {
-  const { favoriteMeetups } = useFavorites();
-  const favoritesCount = favoriteMeetups.length;
 
-  const [isVisible, setIsVisible] = useState(true); 
-  const [lastScrollY, setLastScrollY] = useState(window.scrollY); 
+  const { favorites } = useMeetups();
+  const favoritesCount = favorites.length;
+
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); 
+        setIsVisible(false);
       } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true); 
+        setIsVisible(true);
       }
 
-      setLastScrollY(currentScrollY); 
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);

@@ -1,19 +1,18 @@
-
 import MeetupItem from "../components/meetups/MeetupItem";
-import { useFavorites } from "../store/FavoriteContext";
+import { useMeetups } from "../store/MeetupContext";
 
 export default function FavoritesPage() {
-  const { favoriteMeetups } = useFavorites();
+  const { favorites } = useMeetups();
 
   return (
     <section>
       <h1>Favorites Page</h1>
-      {favoriteMeetups.length === 0 ? (
+      {favorites.length === 0 ? (
         <p>No favorites yet. Start adding some!</p>
       ) : (
         <ul>
-          {favoriteMeetups.map((meetup) => (
-            <MeetupItem key={meetup.id} data={meetup} />
+          {favorites.map((meetup) => (
+            <MeetupItem key={meetup.id} item={meetup} />
           ))}
         </ul>
       )}
