@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+Meetup App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta aplicación de gestión de Meetups permite visualizar, agregar y marcar Meetups como favoritos. También cuenta con navegación dinámica mediante React Router y una animación en el encabezado que responde al desplazamiento de la página.
 
-## Available Scripts
+Características
 
-In the project directory, you can run:
+-Gestión de Meetups: agrega y visualiza Meetups, con posibilidad de eliminarlos o marcarlos como favoritos.
+-Favoritos: organiza Meetups en una lista de favoritos.
+-Navegación dinámica: la barra de navegación en el encabezado muestra una animación dinámica al desplazarse.
 
-### `npm start`
+Instalación
+Este proyecto fue creado con Create React App. Para iniciar, sigue los pasos a continuación en el directorio raíz del proyecto:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Instalación de dependencias:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    - npm install
 
-### `npm test`
+Instalación de dependencias adicionales:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - npm install react-router-dom
 
-### `npm run build`
+    - npm install @testing-library/react
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Scripts Disponibles
+En el directorio del proyecto, puedes ejecutar:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - npm start
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ejecuta la aplicación en modo de desarrollo.
+Abre http://localhost:3000 para verla en el navegador.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La aplicación se recarga automáticamente al realizar cambios en el código y se mostrarán mensajes de errores en la consola.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Testing
+Este proyecto utiliza React Testing Library para la ejecución de pruebas automatizadas. Las pruebas unitarias están disponibles para cada componente principal de la aplicación y verifican:
 
-## Learn More
+Inicia el corredor de pruebas en modo interactivo:
+ 
+    - npm test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Este proyecto cuenta con pruebas unitarias completas para cada uno de los componentes principales, verificando la correcta renderización y funcionalidad de:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-MainNavigation: asegura que el componente de navegación principal renderice los enlaces correctos y el contador de favoritos.
+-App: verifica que el layout de la aplicación se muestre adecuadamente y que la navegación funcione.
+-Otros Componentes: cada componente principal tiene su test unitario específico para validar que la estructura y el comportamiento sean correctos.
 
-### Code Splitting
+Enlaces:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Repositorio del proyecto en GitHub: https://github.com/santiaveiro/Prueba-tecnica-frontend
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
